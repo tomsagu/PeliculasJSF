@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Peliculas</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div align="center"><b>Ordenar por:</b>
+                <h:selectOneMenu value="#{peliculasBean.categoriaActual}">
+                    <f:selectItems value="#{peliculasBean.nombreCategorias}"/>
+                    <f:ajax render="categoriaTable"/>
+                </h:selectOneMenu>
+            </div>
+
+            <h:dataTable border="1" id="categoriaTable" value="#{peliculasBean.listaPeliculas}" var="pelicula">
+                <h:column>
+                    <f:facet name="header">
+                        Title
+                    </f:facet>
+                    #{pelicula.title}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Release Year
+                    </f:facet>
+                    #{pelicula.releaseYear}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Film Length
+                    </f:facet>
+                    #{pelicula.FLength}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Rating Description
+                    </f:facet>
+                    #{pelicula.ratingId.description}
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Borrar" action="#{peliculasBean.doBorrar(pelicula.filmId)}"></h:commandButton>
+                </h:column>
+                <h:column>
+                    <h:commandButton action="#{peliculasBean.doEditar(pelicula.filmId)}" value="Editar"></h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

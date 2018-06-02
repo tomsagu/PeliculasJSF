@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Editar Pelicula</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <table border="1">
+            <tr>
+                <td>Title:</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.title}"/></td>
+            </tr>
+             <tr>
+                <td>Description:</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.description}"/></td>
+            </tr>
+            <tr>
+                <td>Release Year</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.releaseYear}">
+                    <f:validateDoubleRange minimum="1" maximum="2020"></f:validateDoubleRange>
+                    </h:inputText></td>
+            </tr>
+            <tr>
+                <td>Rental Duration</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.rentalDuration}">
+                    <f:validateDoubleRange minimum="0.1" maximum="100000000"></f:validateDoubleRange>
+                    </h:inputText></td>
+            </tr>
+            <tr>
+                <td>Release Rate</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.rentalRate}"/></td>
+            </tr>
+            <tr>
+                <td>Film Length</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.FLength}">
+                        <f:validateDoubleRange minimum="0.1" maximum="100000000"></f:validateDoubleRange>
+                    </h:inputText></td>
+            </tr>
+            <tr>
+                <td>Replacement Cost</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.replacementCost}"/></td>
+            </tr>
+            <tr>
+                <td>Special Features</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.specialFeatures}"/></td>
+            </tr>
+            <tr>
+                <td>Last Update</td>
+                <td><h:inputText value="#{editarPeliculaBean.pelicula.lastUpdate}" readonly="true"/></td>
+            </tr>
+            <tr>
+                <td>Language</td>
+                <td> <h:selectOneMenu value="#{editarPeliculaBean.languageSeleccionado}">
+                        <f:selectItems value="#{editarPeliculaBean.languageList}" var="language" 
+                                       itemValue="#{language.languageId}" itemLabel="#{language.name}"/>
+                        </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td> <h:selectOneMenu value="#{editarPeliculaBean.ratingSeleccionado}">
+                        <f:selectItems value="#{editarPeliculaBean.ratingList}" var="rating" 
+                                       itemValue="#{rating.ratingId}" itemLabel="#{rating.description}"/>
+                        </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td><h:commandButton action="#{editarPeliculaBean.doGuardar()}" value="Guardar"/></td>
+                 <td><h:commandButton action="#{editarPeliculaBean.doCancelar()}" value="Cancelar"/></td>
+            </tr>
+        </table>
+        </h:form>
+    </h:body>
+</html>
+
